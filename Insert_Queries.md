@@ -1,9 +1,85 @@
 
+## Table Creation Queries
+
+### Table-1 : STUDENT
+```sql
+CREATE TABLE STUDENT (
+  StudentID INT PRIMARY KEY,
+  StuName VARCHAR(100) NOT NULL,
+  StuEmail VARCHAR(100) NULL,
+  StuPhone VARCHAR(15) NULL,
+  StuDepartment VARCHAR(50) NOT NULL,
+  StuDateOfBirth DATE NOT NULL,
+  StuEnrollmentYear INT NOT NULL
+);
+```
+### Table-2 : COURSE
+```sql
+CREATE TABLE COURSE (
+  CourseID VARCHAR(10) PRIMARY KEY,
+  CourseName VARCHAR(100) NOT NULL,
+  CourseCredits INT NOT NULL,
+  CourseDepartment VARCHAR(50) NOT NULL,
+  CourseSemester INT NOT NULL
+);
+```
+
+### Table-3 : FACULTY
+```sql
+CREATE TABLE FACULTY (
+  FacultyID INT PRIMARY KEY,
+  FacultyName VARCHAR(100) NOT NULL,
+  FacultyEmail VARCHAR(100) NULL,
+  FacultyDepartment VARCHAR(50) NOT NULL,
+  FacultyDesignation VARCHAR(50) NOT NULL,
+  FacultyJoiningDate DATE NOT NULL
+);
+```
+
+### Table-4 : ENROLLMENT
+```sql
+CREATE TABLE ENROLLMENT (
+  EnrollmentID INT PRIMARY KEY IDENTITY(1,1),
+  StudentID INT NOT NULL,
+  CourseID VARCHAR(10) NOT NULL,
+  EnrollmentDate DATE NULL,
+  Grade VARCHAR(2) NULL,
+  EnrollmentStatus VARCHAR(20) NOT NULL CHECK (EnrollmentStatus IN ('Active', 'Completed', 'Dropped')),
+  FOREIGN KEY (StudentID) REFERENCES STUDENT(StudentID),
+  FOREIGN KEY (CourseID) REFERENCES COURSE(CourseID)
+);
+```
+
+### Table-5 : COURSE_ASSIGNMENT
+```sql
+CREATE TABLE COURSE_ASSIGNMENT (
+  AssignmentID INT PRIMARY KEY IDENTITY(1,1),
+  CourseID VARCHAR(10) NOT NULL,
+  FacultyID INT NOT NULL,
+  Semester INT NOT NULL,
+  Year INT NOT NULL,
+  ClassRoom VARCHAR(20) NOT NULL,
+  FOREIGN KEY (CourseID) REFERENCES COURSE(CourseID),
+  FOREIGN KEY (FacultyID) REFERENCES FACULTY(FacultyID)
+);
+```
+
 ## Insert Queries
 
 ### Table-1 : STUDENT
 
-- For the STUDENT table, add all records manually using **Edit Top 200 Rows** Do not use any INSERT query for inserting student data.
+```sql
+INSERT INTO STUDENT (StudentID,StuName,StuEmail,StuPhone, StuDepartment,StuDateOfBirth,StuEnrollmentYear)
+VALUES
+(1, 'Raj Patel', 'raj@univ.edu', '9876543210', 'CSE', '2003-05-15', 2021),
+(2, 'Priya Shah', 'priya@univ.edu', '9876543211', 'IT', '2002-08-22', 2020),
+(3, 'Amit Kumar', 'amit@univ.edu', '9876543212', 'CSE', '2003-11-10', 2021),
+(4, 'Sneha Desai', 'sneha@univ.edu', '9876543213', 'ECE', '2004-02-18', 2022),
+(5, 'Rohan Mehta', 'rohan@univ.edu', '9876543214', 'IT', '2003-07-25', 2021),
+(6, 'Kavita Joshi', 'kavita@univ.edu', '9876543215', 'CSE', '2002-12-30', 2020),
+(7, 'Arjun Verma', 'arjun@univ.edu', '9876543216', 'MECH', '2003-04-08', 2021),
+(8, 'Pooja Rao', 'pooja@univ.edu', '9876543217', 'ECE', '2004-06-12', 2022);
+```
 
 ### Table-2 : COURSE
 
