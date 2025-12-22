@@ -24,6 +24,7 @@ db.<collection_name>.insertMany([{ }, { }])
 db.<collection_name>.drop()
 
 Note : Drop a Database (Drop Current Database)
+use <DatabaseName>
 db.dropDatabase()
 
 8. Check Whether a Collection Exists.
@@ -72,3 +73,4 @@ db.Student.find({})
 
 14. Display the Count of Documents
 db.<collection_name>.countDocuments()
+
