@@ -1,0 +1,71 @@
+MongoDB Basic Commands and Syntax (Lab-8 & Lab-9)
+
+1. Create or Switch Database
+use <database name>
+
+2. Show All Databases
+show dbs  or  show databases
+
+NOTE : In MongoDB, a database is NOT created or shown until it contains at least one collection with data.
+
+3.  Create Collection
+db.createCollection("<collection_name>")
+
+4. List all collections
+show collections
+
+5. Insert One Document
+db.<collection_name>.insertOne({ })
+
+6. Insert Multiple Documents
+db.<collection_name>.insertMany([{ }, { }])
+
+7. Drop a Collection
+db.<collection_name>.drop()
+
+8. Check Whether a Collection Exists.
+db.getCollectionNames()
+
+(If the collection name appears in the list, it exists.)
+
+9. Check the Stats of a Collection
+db.<collection_name>.stats()
+
+10. Display All Documents
+db.<collection_name>.find()
+
+11. Display Only One Document
+db.<collection_name>.findOne()
+
+12. Find with Condition and Selection
+
+Condition part (filter):
+db.<collection_name>.find({ <condition> })
+
+Selection part (projection):
+db.<collection_name>.find({ <condition> }, { <field1>: 1, <field2>: 1 })
+
+Note:
+In the find() method, the condition part is compulsory.
+If only the selection (projection) part is required, an empty condition {} must be provided.
+
+db.<collection_name>.find({}, { <field1>: 1, <field2>: 1 })
+
+13. Sort, Skip and Limit
+db.<collection_name>.find({ <condition> })
+  .sort({ <field>: 1 | -1 })
+  .skip(<number>)
+  .limit(<number>)
+
+Note:
+When both skip() and limit() are used, skip() works first and then limit() is applied.
+
+Example: Sorts documents by Name, skips the first 2 documents, and displays the next 3 documents.
+
+db.Student.find({})
+  .sort({ Name: 1 })
+  .skip(2)
+  .limit(3)
+
+14. Display the Count of Documents
+db.<collection_name>.countDocuments()
