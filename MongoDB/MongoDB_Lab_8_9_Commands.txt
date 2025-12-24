@@ -14,6 +14,9 @@ db.createCollection("<collection_name>")
 4. List all collections
 show collections
 
+Note: Show Current Database
+db
+
 5. Insert One Document
 db.<collection_name>.insertOne({ })
 
@@ -73,4 +76,7 @@ db.Student.find({})
 
 14. Display the Count of Documents
 db.<collection_name>.countDocuments()
+
+15. using and
+db.<collection_name>.find( {$and: [{<ColumnName>: {Condition} }, {<ColumnName>: {Condition} }] } , {Projection Part})
 
