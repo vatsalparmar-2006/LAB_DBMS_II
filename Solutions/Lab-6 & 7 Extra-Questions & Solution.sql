@@ -1,3 +1,12 @@
+--- NOTE ---
+
+-- To Show triggers on a table.
+EXEC sp_helptrigger 'STUDENT';
+
+-- List all triggers in database
+SELECT name
+FROM sys.triggers;
+
 
 -- Lab - 6 & 7 : Extra Questions & Solutions
 ------------------------------------------------------------
@@ -306,4 +315,5 @@ DROP TRIGGER TR_STUDENT_UPDATE;
 -- 5. Can multiple AFTER triggers be created on the same table for the same operation?
 -- 6. Can multiple INSTEAD OF triggers be created on a single table for the same operation?
 -- 7. In an INSTEAD OF trigger, are values present in the inserted and deleted tables while inserting and deleting records?
+
 -- 8. Can a trigger be created on a view? If yes, which type of trigger can be created on a view: AFTER trigger,INSTEAD OF trigger,or both?
